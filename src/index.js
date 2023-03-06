@@ -4,7 +4,7 @@ const BaseUrl = `https://strangers-things.herokuapp.com/api/${CohortName}`;
 import {createRoot} from "react-dom/client";
 import {useState, useEffect} from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"; 
-import { AllProducts, SingleProduct, Homepage } from "./components";
+import { AllProducts, SingleProduct, RegisterForm, Login } from "./components";
 
 const App = () => {
     const [products, setProducts] = useState([]);
@@ -38,8 +38,10 @@ const App = () => {
         <div>
 
             <div>
-                <nav>
+                <nav id="links">
                 <Link to="/">Listings</Link>
+                <Link to="/register">Sign Up</Link>
+                <Link to="/login">Login</Link>
                 </nav>
                
                <section>
@@ -54,6 +56,10 @@ const App = () => {
                 <Route path="/"element={<AllProducts productProps={products}/>} />
                
                 <Route path="/products/:id" element={<SingleProduct />} />
+
+                <Route path="register" element={<RegisterForm />}/>
+
+                <Route path="login" element={<Login />}/>
             </Routes>
             
         </div>
